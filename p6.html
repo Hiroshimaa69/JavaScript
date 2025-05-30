@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border: 4px solid #4a90e2;
+    background-color: white;
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.3);
+    width: 350px;
+    text-align: left;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  th {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 1.4em;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  td {
+    padding: 12px 15px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #e1eaff;
+  }
+  
+  td[colspan="2"] {
+    text-align: center;
+  }
+  
+  input[type="date"],
+  input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 1em;
+    border: 2px solid #effd5f;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="date"]:focus,
+  input[type="text"]:focus {
+    border-color: #effd5f;
+    outline: none;
+  }
+  
+  button {
+    background-color: #effd5f;
+    color: black;
+    font-weight: 700;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button:hover {
+    background-color: #effd5f;
+  }
+  
+  #k1 {
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 15px;
+    color: #2a4d7a;
+  }
+
+  
+  #back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    text-decoration: none;
+position: absolute;
+margin-bottom: 700px;
+margin-right: 1100px;}
+  
+
+    </style>
+    
+    <script>
+        function da() {
+            d1=document.getElementById("d").value;
+            d1=new Date(d1);
+            an1=d1.getFullYear();
+            d2=new Date()
+            an2=d2.getFullYear()
+            an=an2-an1
+            document.getElementById("k").value=String(an)
+            mo=d1.getMonth();
+            sa=saison(mo+1)
+            document.getElementById("k1").innerHTML=sa
+        }
+        function saison(mo) {
+            if (mo>=3 && mo<=5) {
+                ch="tu es ne le prientemps"
+            }
+            else if (mo>=6 && mo<=8) {
+                ch="tu es ne l'ete"
+            }
+            else if (mo>=9 && mo<=11) {
+                ch="tu es ne l'automme"
+            }
+            else{
+                ch="tu es ne l'hiver"
+            }
+            return ch
+        }
+    </script>
+</head>
+<body>
+    <a href="home.html" id="back-home">← Retour à la page d'accueil</a>
+    <table border="4px">
+        <th colspan="2" id="m">Mon age est</th>
+        <tr>
+            <td>Date de naissance </td>
+            <td><input type="date" id="d"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="button" id="n" onclick="da()">Mon age </button></td>
+        </tr>
+        <tr>
+            <td>Mon age egale a :</td>
+            <td><input type="text" id="k"> </td>
+        </tr>
+        <tr>
+            <td colspan="2" id="k1"></td>
+        </tr>
+    </table>
+
+
+
+
+</body>
+</html>
