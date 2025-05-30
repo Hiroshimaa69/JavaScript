@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #2c3e50;
+  }
+  
+  h1 {
+    color: #34495e;
+    margin-bottom: 1rem;
+  }
+  
+  table {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  td {
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 300px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #effd5f;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #effd5f;
+  }
+  
+  #k {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    background: #ecf0f1;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+  #back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    text-decoration: none;
+position: absolute;
+margin-bottom: 700px;
+margin-right: 1100px;}
+    </style>
+    <script>
+        function rest() {
+            document.getElementById("A").value=""
+            document.getElementById("b").value=""
+            document.getElementById("k").innerHTML=""
+        }
+        function plus() {
+            a=document.getElementById("A").value
+            b=document.getElementById("b").value
+            ch=Number(a)+Number(b)
+            document.getElementById("k").innerHTML=ch
+        }
+        function moin() {
+            a=document.getElementById("A").value
+            b=document.getElementById("b").value
+            ch=Number(a)-Number(b)
+            document.getElementById("k").innerHTML=ch
+        }
+        function fois(){
+            a=document.getElementById("A").value
+            b=document.getElementById("b").value
+            ch=Number(a)*Number(b)
+            document.getElementById("k").innerHTML=ch
+        }
+        function sur() {
+            a=document.getElementById("A").value
+            b=document.getElementById("b").value
+            ch=Number(a)/Number(b)
+            document.getElementById("k").innerHTML=ch
+        }
+        function puis() {
+            a=document.getElementById("A").value
+            b=document.getElementById("b").value
+            ch=1
+            for (let i= 1; i<= b; i++) {
+                ch=ch*Number(a)  
+            }
+            document.getElementById("k").innerHTML=ch
+        }
+    </script>
+</head>
+<body>
+    <a href="home.html" id="back-home">← Retour à la page d'accueil</a>
+    <h1 id="a">Calculatrice</h1>
+    <table>
+        <tr>
+            <td>A</td>
+            <td><input type="number" id="A"></td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td><input type="number" id="b"></td>
+        </tr>
+    </table>
+    <fieldset>
+        <button type="button" onclick="plus()">+</button>
+        <button type="button" onclick="moin()">-</button>
+        <button type="button" onclick="fois()">*</button>
+        <button type="button" onclick="sur()">/</button>
+        <button type="button" onclick="puis()">puis</button>
+        <button type="button" onclick="rest()">reset</button>
+    </fieldset>
+    <h1>resultat</h1>
+    <div id="k"></div>
+
+
+
+
+</body>
+</html>

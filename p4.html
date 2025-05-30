@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function verif1(ch) {
+            if (!ch) return false;
+            const parts = ch.trim().split(' ');
+            if (parts.length !== 2) return false;
+            return parts.every(word => word.length > 0 && word[0] >= 'A' && word[0] <= 'Z');
+        }
+    
+        function verif2(email) {
+            if (!email) return false;
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    
+        function verif() {
+            let messages = [];
+    
+            let nomPrenomInput = document.querySelector('input[placeholder="Prenom et Nom"]');
+            let nomPrenom = nomPrenomInput.value;
+            if (!verif1(nomPrenom)) {
+                messages.push("Nom et prénom non valides (deux mots avec majuscule au début).");
+                nomPrenomInput.style.backgroundColor = "red";
+            } else {
+                nomPrenomInput.style.backgroundColor = "";
+            }
+    
+            let emailInput = document.querySelector('input[placeholder="exemple@domaine.com"]');
+            let email = emailInput.value;
+            if (!verif2(email)) {
+                messages.push("Email non valide.");
+                emailInput.style.backgroundColor = "red";
+            } else {
+                emailInput.style.backgroundColor = "";
+            }
+    
+            let adresseTextarea = document.querySelector('textarea');
+            let adresse = adresseTextarea.value;
+            if (adresse.trim() === "") {
+                messages.push("Adresse vide.");
+                adresseTextarea.style.backgroundColor = "red";
+            } else {
+                adresseTextarea.style.backgroundColor = "";
+            }
+    
+            let genreChecked = document.querySelectorAll('input[type="radio"][name="r"]:checked').length > 0;
+            if (!genreChecked) {
+                messages.push("Veuillez sélectionner un type de carte bancaire.");
+            }
+    
+            let articlesChecked = document.querySelectorAll('fieldset#c input[type="checkbox"]:checked').length;
+            if (articlesChecked === 0) {
+                messages.push("Veuillez sélectionner au moins un article à acheter.");
+            }
+    
+            let ville = document.querySelector('select').value;
+            if (!ville) {
+                messages.push("Veuillez sélectionner une ville.");
+            }
+    
+            if (messages.length > 0) {
+                alert("Erreurs détectées :\n- " + messages.join("\n- "));
+                return false;
+            } else {
+                alert("Formulaire valide !");
+                return true;
+            }
+        }
+    
+        // Delay attaching the event until page is loaded
+        window.onload = function () {
+            document.querySelector("form").onsubmit = () => verif();
+        };
+    </script>
+    
+    
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    background: #f4f7f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+form {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+    width: 100%;
+    max-width: 650px;
+}
+
+
+fieldset {
+    border: 2px solid #a4d8ee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px 25px;
+}
+
+
+legend {
+    font-weight: 600;
+    font-size: 1.25em;
+    color: #345071;
+    padding: 0 10px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 10px 8px;
+    vertical-align: middle;
+}
+
+
+label {
+    font-weight: 600;
+    color: #345071;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select,
+input[type="date"],
+input[type="time"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.8px solid #000000;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+    border-color: #345071;
+    outline: none;
+}
+
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+}
+
+
+.l {
+    cursor: pointer;
+    background-color: #ded983;
+    border: none;
+    border-radius: 8px;
+    color: #345071;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 12px 28px;
+    margin-right: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.l:hover {
+    background-color: #c4bd69;
+}
+
+
+input[type="reset"] {
+    background-color: #f38b6d;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #d96b48;
+}
+
+
+fieldset:last-of-type {
+    text-align: center;
+}
+
+fieldset#c table td {
+    text-align: center;
+}
+
+table#b td:first-child {
+    width: 35%;
+    font-weight: 600;
+    color: #345071;
+}
+
+
+select {
+    cursor: pointer;
+}
+
+  #back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    text-decoration: none;
+position: absolute;
+margin-bottom: 700px;
+margin-right: 1100px;}
+
+    </style>
+</head>
+<body>
+    <a href="home.html" id="back-home">← Retour à la page d'accueil</a>
+    <form action="">
+    <fieldset id="a"> 
+        <legend>Votre Identite</legend>
+        <table id="b">
+            <tr>
+                <td><label for="">Nom Prenom</label></td>
+                <td><input type="text" placeholder="Prenom et Nom"></td>
+            </tr>
+            <tr>
+                <td><label for="">Email</label></td>
+                <td><input type="email" placeholder="exemple@domaine.com"></td>
+            </tr>
+            <tr>
+                <td><label for="">Telephone </label></td>
+                <td><input type="number" placeholder="par ex +21600000000"></td>
+            </tr>
+        </table>
+        <fieldset id="c">
+            <legend>Les articles a acheter </legend>
+            <table>
+                <tr>
+                    <td><input type="checkbox"> chaises</td>
+                    <td><input type="checkbox">tables </td>
+                    <td><input type="checkbox">nappes </td>
+                </tr>
+            </table>
+        </fieldset>
+    </fieldset>
+    <fieldset>
+        <legend>Livraison</legend>
+        <table class="d">
+            <tr>
+                <td>Adresse</td>
+                <td><textarea name="" id="" cols="20" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td>ville</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">tunis</option>
+                        <option value="">sousse</option>
+                        <option value="">sfax</option>
+                        <option value="">bizerte</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Date souhaite de Livraison</td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td>Heure souhaite de Livraison</td>
+                <td><input type="time"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>information CB</legend>
+        <table class="d">
+            <tr>
+                <td><input type="radio" name="r">VISA</td>
+                <td><input type="radio" name="r">AmEx</td>
+                <td><input type="radio" name="r">Mastercard</td>
+            </tr>
+            <tr>
+                <td>N°de carte</td>
+                <td><input type="number"></td>
+            </tr>
+            <tr>
+                <td>Code securite</td>
+                <td><input type="number"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset>
+        <input class="l" type="submit" value="J'achete !">
+        <input id="h" class="l" type="reset" value="Annuler !">
+        <input type="checkbox" id="toggle-explication" hidden />
+
+
+
+    </fieldset>
+</form>
+</body>
+</html>

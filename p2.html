@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Changer l'image</title>
+    <script>
+        var t = [];
+        function color() {
+            for (let i = 0; i < 6; i++) {
+                t[i] = "photo/m" + i + ".jpg";
+            }
+        }
+        function changer() {
+            let x = Math.floor(Math.random() * 6);
+            document.getElementById("a").src = t[x];
+        }
+    </script>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #2c3e50;
+  }
+  
+  .container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    width: 320px;
+  }
+  
+  button {
+    background-color: #effd5f;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #effd5f;
+  }
+  
+  .image-container {
+    margin-bottom: 2rem;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  #back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    text-decoration: none;
+position: absolute;
+margin-bottom: 700px;
+margin-right: 1100px;}
+
+    </style>
+</head>
+<body onload="color()">
+    <a href="home.html" id="back-home">← Retour à la page d'accueil</a>
+    <div class="container">
+        <button type="button" onclick="changer()">Cliquer pour changer l'image</button>
+        <div class="image-container">
+            <img src="photo/m1.jpg" id="a" alt="Image à changer" />
+        </div>
+
+
+
+
+    </div>
+</body>
+</html>
